@@ -1,0 +1,641 @@
+:root {
+  --breaking-news: rgb(202, 5, 5);
+  --section-divider-color: rgb(167, 167, 167);
+  --primary-color: #231f20;
+}
+
+/* Attribute Selector */
+a[data-category="external"] {
+  color: red;
+}
+
+h3 {
+  font-size: 5vw;
+}
+
+
+/* Makes the images responsive */
+.responsive-image {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Add Hover State */
+.responsive-image:hover {
+  opacity: 0.8;
+}
+
+/* Adds a transition effect for a smooth opacity change */
+.responsive-image {
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Adds an underline text when hovering the article */
+article:hover h2,
+article:hover h3,
+article:hover p {
+  text-decoration: underline;
+  color: rgb(0, 0, 117)
+}
+
+/* Adjacent Sibling Selector */
+.responsive-image:hover+.responsive-image {
+  opacity: 0.5;
+}
+
+/* only displays for desktop */
+
+/* for the breaking news text */
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  color: rgb(0, 0, 117);
+  text-decoration: underline;
+
+
+}
+
+/* for the date */
+
+p {
+  margin: 0;
+}
+
+/* making sure the top article and the main articles are aligned */
+
+.articles-wrap {
+  display: grid;
+  justify-self: center;
+
+}
+
+.breaking-news-num {
+  display: none;
+}
+
+
+
+
+/* ---------------------- Featured article ---------------------------- */
+
+/* General Sibling Selector */
+#top-article~.main-wrap {
+  margin-top: 5rem;
+}
+
+#top-article img {
+  z-index: 1;
+  width: 100%;
+  margin-top: 5rem;
+}
+
+@media(min-width:48em) {
+  #top-article {
+    margin-top: 10rem;
+  }
+
+}
+
+
+/* --------------- for the main + breaking news articles -------------------------- */
+
+.two-row-articles article {
+  /* this keeps the grid box the proper size for mobile layout */
+
+  max-height: 200px;
+  overflow: hidden;
+  border-top: 2px solid var(--section-divider-color);
+  border-bottom: 2px solid var(--section-divider-color);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  column-gap: 10px;
+  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* maybe change this number based on what our text/images look like */
+
+@media (min-width:33.2em) {
+  .two-row-articles article {
+    max-height: none;
+    overflow: visible;
+  }
+
+}
+
+@media(min-width:48em) {
+  .two-row-articles article {
+    display: inline;
+    border-top: none;
+  }
+
+
+
+
+  .two-row-articles:not(#breaking-news) {
+    border-top: 2px solid var(--section-divider-color);
+  }
+
+
+  .main-wrap {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+
+
+  }
+
+  .articles-wrap:not(#breaking-news) {
+    width: 90%;
+  }
+
+
+
+
+
+
+  .main-articles-grid {
+    grid-row-start: 2;
+
+
+  }
+
+  .main-articles-grid img {
+
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --------------- only for the main articles ----------------------- */
+
+#main-articles {
+  column-gap: 30px;
+  grid-template-rows: repeat(6, 1fr);
+}
+
+
+
+
+
+@media(min-width:48em) {
+  #main-articles {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+
+
+
+  #main-articles article {
+    padding-top: 30px;
+    border-bottom: 2px solid var(--section-divider-color);
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: none;
+    grid-template-rows: repeat(2, 1fr);
+
+
+  }
+
+  /* only targets the the last three articles */
+
+  #main-articles article:not(.border-top) {
+    border: none;
+    border-bottom: 2px solid var(--section-divider-color);
+
+  }
+
+  #main-articles p {
+    margin-bottom: 50px;
+  }
+
+
+  #main-articles h3 {
+    font-size: 1.5vw;
+    color: var(--primary-color);
+  }
+
+
+}
+
+
+
+
+
+/* ---------------- just for the breaking news/side section articles ----------- */
+
+.side-section {
+  margin-top: 100px;
+  border-top: 5px solid var(--breaking-news);
+  row-gap: 10px;
+  grid-template-rows: repeat(4, 1fr);
+}
+
+.side-section>h3 {
+  /* this makes sure the breaking news section looks like a fieldset */
+
+  width: 130px;
+  background: white;
+  padding-left: 5px;
+  margin-top: -15px;
+  margin-left: 20px;
+  color: var(--breaking-news);
+  font-size: 30px;
+
+}
+
+@media(min-width:48em) {
+
+  .side-section {
+    grid-row: span 2;
+    margin-right: 5rem;
+    margin-top: 15rem;
+
+    padding-right: 10px;
+    grid-column-start: 2;
+    border: 2px solid var(--breaking-news);
+    margin-bottom: 30rem;
+  }
+
+  /* only show breaking news images in mobile */
+
+  .side-section img {
+    display: none;
+
+  }
+
+  /* removes border for last article title */
+
+  .side-section article:last-child {
+    border: none;
+  }
+
+  @media (min-width:90em) {
+    .side-section {
+      margin-right: 10rem;
+    }
+  }
+
+  /* --------- for styling the articles within the .side-section wrap -------- */
+
+  #breaking-news {
+
+    margin-top: 30px;
+
+  }
+
+  #breaking-news:not(.breaking-news-num) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  #breaking-news article {
+    display: grid;
+    grid-template-columns: 10% 90%;
+    margin-top: 30px;
+    padding-bottom: 60px;
+  }
+
+
+  #breaking-news h3 {
+    font-size: 2.5vw;
+  }
+
+  /* to move the date to the right */
+
+  #breaking-news article p {
+    grid-column-start: 2;
+  }
+
+  /* styling the number */
+
+  .breaking-news-num {
+    display: inline;
+    color: var(--breaking-news);
+    font-size: 3vw;
+    font-weight: 900;
+    margin-top: 10px;
+    align-self: start;
+    justify-self: center;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Header section: Taylor */
+
+.normalMenu {
+  display: flex;
+  position: absolute;
+  left: 0;
+  right: 0;
+  justify-content: space-around;
+  padding: 0;
+  background-color: white;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@media(min-width: 48em) {
+  .normalMenu {
+    border-bottom: solid;
+    border-width: 2px;
+    margin: auto 5rem;
+    border-color: #dbd9d9;
+  }
+}
+
+
+#desktop-nav {
+  display: none;
+}
+
+@media (min-width: 48em) {
+  #mobile-nav {
+    display: none;
+  }
+
+  #desktop-nav {
+    display: block;
+  }
+
+}
+
+.menu-wrapper {
+  display: flex;
+  position: absolute;
+  left: 0;
+  right: 0;
+  justify-content: space-around;
+  padding: 0;
+}
+
+.bar {
+  width: 20px;
+  height: 2px;
+  background-color: black;
+  border-radius: 1rem;
+}
+
+.normalMenu li div:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  align-items: center;
+  justify-content: center;
+}
+
+.normalMenu li:last-child {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+}
+
+.normalMenu li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0.5rem;
+  list-style: none;
+  text-decoration: none;
+}
+
+@media (min-width: 48em) {
+  .normalMenu li {
+    flex-direction: row;
+  }
+
+  .normalMenu li:last-child {
+    flex-direction: row;
+    gap: 2rem;
+  }
+}
+
+.bar:nth-child(1) {
+  top: 0px;
+
+}
+
+.bar:nth-child(2) {
+  top: 5px;
+
+}
+
+.bar:nth-child(3) {
+  top: 10px;
+
+}
+
+.newsTopicsSM {
+  padding: 0;
+  font-size: 18px;
+  margin-top: 2rem;
+}
+
+.newsTopicsSM li {
+  display: block;
+  margin: 3rem;
+}
+
+.openMenu {
+  position: absolute;
+  top: -48px;
+  /* height of header above */
+  width: 100%;
+  background-color: white;
+}
+
+.openMenu section {
+  font-size: 16px;
+  border-bottom: 1px solid #dbd9d9;
+  margin: 0rem 1rem;
+}
+
+.openMenu h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 1rem;
+}
+
+.openMenu section li {
+  text-decoration: none;
+  list-style: none;
+  padding: 1rem 2.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.openMenu section:nth-child(2) ul {
+  display: block;
+}
+
+.openMenu section:nth-child(2) li {
+  padding: 0;
+}
+
+.openMenu section ul {
+  display: grid;
+  flex-wrap: wrap;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 4px;
+  padding: 0;
+}
+
+.openMenuHeader {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+  border-bottom: 1px solid #dbd9d9;
+  padding-bottom: 1rem;
+}
+
+@media (min-width: 48em) {
+  .openMenu {
+    top: 46px;
+  }
+
+  .newsTopicsSM {
+    padding: 0;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .openMenu section li {
+    text-decoration: none;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+    margin: 0;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .openMenu section:nth-child(2) ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .openMenu section:nth-child(2) ul li {
+    padding: 2rem;
+  }
+
+  #newsCategoriesDesktop {
+    display: flex;
+    font-weight: bold;
+    font-size: 16px;
+    gap: 2rem;
+    max-width: 80%;
+    height: 100%;
+    width: 100%;
+    column-count: 10;
+    column-fill: auto;
+    overflow: auto;
+  }
+
+  #newsCategoriesDesktop li {
+    padding: 1rem;
+  }
+
+  #bottomOpenMenuDesktop {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+
+
+#footerOfOpenMenu {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #231f20;
+  margin: 0;
+  padding: 1rem;
+  border: none;
+}
+
+/* End Taylor CSS */
+
+.footer {
+  font-size: 18px;
+  color: #ffffff;
+  text-align: center;
+  background-color: #231f20;
+  margin-top: 20px;
+}
+
+/* not sure why footer address already has margin-bottom: -20px but this code makes the footer at the very bottom of the screen*/
+.footer address {
+  margin-bottom: -20px;
+}
+
+.globalHeader {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  height: 48px;
+  font-size: 12px;
+  align-items: center;
+  background-color: #231f20;
+  color: white;
+}
+
+.globalHeaderDesktop {
+  display: none;
+}
+
+.searchBar {
+  background-color: white;
+
+}
+
+@media (min-width: 48em) {
+  .globalHeader {
+    display: none;
+  }
+
+  .globalHeaderDesktop {
+    display: flex;
+    justify-content: space-around;
+    height: 48px;
+    font-size: 12px;
+    align-items: center;
+    background-color: #231f20;
+    color: white;
+  }
+}
