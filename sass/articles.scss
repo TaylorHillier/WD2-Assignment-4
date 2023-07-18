@@ -1,0 +1,269 @@
+$breaking-news: rgb(202, 5, 5);
+
+$section-divider-color: rgb(167, 167, 167);
+
+$primary-color: #231f20;
+
+/* Attribute Selector */
+a[data-category="external"] {
+    color: red;
+}
+
+h3 {
+    font-size: 5vw;
+}
+
+/* Makes the images responsive */
+.responsive-image {
+    max-width: 100%;
+    height: auto;
+
+    &:hover {
+        opacity: 0.8;
+    }
+
+    /* Adds a transition effect for a smooth opacity change */
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Adds an underline text when hovering the article */
+article:hover {
+
+    h2,
+    h3,
+    p {
+        text-decoration: underline;
+        color: rgb(0, 0, 117);
+    }
+}
+
+/* Adjacent Sibling Selector */
+.responsive-image:hover+.responsive-image {
+    opacity: 0.5;
+}
+
+/* only displays for desktop */
+
+/* for the breaking news text */
+
+a {
+    text-decoration: none;
+    color: black;
+
+    &:hover {
+        text-decoration: none;
+    }
+
+    &:active {
+        color: rgb(0, 0, 117);
+        text-decoration: underline;
+    }
+}
+
+/* for the date */
+
+p {
+    margin: 0;
+}
+
+/* making sure the top article and the main articles are aligned */
+
+.articles-wrap {
+    display: grid;
+    justify-self: center;
+}
+
+.breaking-news-num {
+    display: none;
+}
+
+/* ---------------------- Featured article ---------------------------- */
+
+/* General Sibling Selector */
+#top-article~.main-wrap {
+    margin-top: 5rem;
+
+}
+
+#top-article img {
+    z-index: 1;
+    width: 100%;
+    margin-top: 5rem;
+}
+
+@media (min-width: 48em) {
+    #top-article {
+        margin-top: 10rem;
+    }
+}
+
+/* --------------- for the main + breaking news articles -------------------------- */
+
+.two-row-articles article {
+    /* this keeps the grid box the proper size for mobile layout */
+
+    max-height: 200px;
+    overflow: hidden;
+    border-top: 2px solid $section-divider-color;
+    border-bottom: 2px solid $section-divider-color;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    column-gap: 10px;
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    @media (min-width: 33.2em) {
+        max-height: none;
+        overflow: visible;
+    }
+
+    @media (min-width: 48em) {
+        display: inline;
+        border-top: none;
+    }
+}
+
+/* maybe change this number based on what our text/images look like */
+
+@media (min-width: 48em) {
+    .two-row-articles:not(#breaking-news) {
+        border-top: 2px solid $section-divider-color;
+    }
+
+    .main-wrap {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+
+        .articles-wrap:not(#breaking-news) {
+            width: 90%;
+        }
+
+        .main-articles-grid {
+            grid-row-start: 2;
+
+            img {
+                width: 100%;
+            }
+        }
+    }
+}
+
+/* --------------- only for the main articles ----------------------- */
+
+#main-articles {
+    column-gap: 30px;
+    grid-template-rows: repeat(6, 1fr);
+
+    @media (min-width: 48em) {
+        display: grid;
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+
+        article {
+            padding-top: 30px;
+            border-bottom: 2px solid $section-divider-color;
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: none;
+            grid-template-rows: repeat(2, 1fr);
+
+            &:not(.border-top) {
+                border: none;
+                border-bottom: 2px solid $section-divider-color;
+            }
+
+            p {
+                margin-bottom: 50px;
+            }
+
+            h3 {
+                font-size: 1.5vw;
+                color: $primary-color;
+            }
+        }
+    }
+}
+
+/* ---------------- just for the breaking news/side section articles ----------- */
+
+.side-section {
+    margin-top: 100px;
+    border-top: 5px solid $breaking-news;
+    row-gap: 10px;
+    grid-template-rows: repeat(4, 1fr);
+
+    h3 {
+        /* this makes sure the breaking news section looks like a fieldset */
+        width: 130px;
+        background: white;
+        padding-left: 5px;
+        margin-top: -15px;
+        margin-left: 20px;
+        color: $breaking-news;
+        font-size: 30px;
+    }
+
+    @media (min-width: 48em) {
+        grid-row: span 2;
+        margin-right: 5rem;
+        margin-top: 15rem;
+        padding-right: 10px;
+        grid-column-start: 2;
+        border: 2px solid $breaking-news;
+        margin-bottom: 30rem;
+
+        /* only show breaking news images in mobile */
+        img {
+            display: none;
+        }
+
+        /* removes border for last article title */
+        article:last-child {
+            border: none;
+        }
+
+        @media (min-width: 90em) {
+            margin-right: 10rem;
+        }
+
+        /* --------- for styling the articles within the .side-section wrap -------- */
+
+        #breaking-news {
+            margin-top: 30px;
+
+            &:not(.breaking-news-num) {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            article {
+                display: grid;
+                grid-template-columns: 10% 90%;
+                margin-top: 30px;
+                padding-bottom: 60px;
+
+                h3 {
+                    font-size: 2.5vw;
+                }
+
+                /* to move the date to the right */
+                p {
+                    grid-column-start: 2;
+                }
+            }
+
+            /* styling the number */
+            .breaking-news-num {
+                display: inline;
+                color: $breaking-news;
+                font-size: 3vw;
+                font-weight: 900;
+                margin-top: 10px;
+                align-self: start;
+                justify-self: center;
+
+            }
+        }
+    }
+}
