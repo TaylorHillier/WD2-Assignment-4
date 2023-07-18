@@ -121,20 +121,20 @@
         font-size: 16px;
         border-bottom: 1px solid #dbd9d9;
         margin: 0rem 1rem;
+
+        & li {
+            text-decoration: none;
+            list-style: none;
+            padding: 1rem 2.5rem;
+            display: flex;
+            align-items: center;
+        }
     }
 
     h3 {
         font-size: 18px;
         font-weight: bold;
         margin-left: 1rem;
-    }
-
-    section li {
-        text-decoration: none;
-        list-style: none;
-        padding: 1rem 2.5rem;
-        display: flex;
-        align-items: center;
     }
 
     section:nth-child(2) ul {
@@ -155,6 +155,10 @@
     }
 }
 
+@mixin standard-border {
+    border-bottom: 1px solid #dbd9d9;
+}
+
 .openMenuHeader {
     display: flex;
     justify-content: space-between;
@@ -162,8 +166,8 @@
     align-items: center;
     font-size: 18px;
     font-weight: bold;
-    border-bottom: 1px solid #dbd9d9;
     padding-bottom: 1rem;
+    @include standard-border;
 }
 
 @media (min-width: 48em) {
@@ -189,6 +193,8 @@
     .openMenu section:nth-child(2) ul {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        gap: 4px
     }
 
     .openMenu section:nth-child(2) ul li {

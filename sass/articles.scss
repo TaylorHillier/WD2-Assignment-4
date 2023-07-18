@@ -98,6 +98,9 @@ p {
 }
 
 /* --------------- for the main + breaking news articles -------------------------- */
+@mixin article-border {
+    border-bottom: 2px solid $section-divider-color;
+}
 
 .two-row-articles article {
     /* this keeps the grid box the proper size for mobile layout */
@@ -105,7 +108,7 @@ p {
     max-height: 200px;
     overflow: hidden;
     border-top: 2px solid $section-divider-color;
-    border-bottom: 2px solid $section-divider-color;
+    @include article-border;
     padding-top: 10px;
     padding-bottom: 10px;
     column-gap: 10px;
@@ -162,7 +165,7 @@ p {
 
         article {
             padding-top: 30px;
-            border-bottom: 2px solid $section-divider-color;
+            @include article-border;
             margin-top: 20px;
             display: grid;
             grid-template-columns: none;
@@ -170,7 +173,7 @@ p {
 
             &:not(.border-top) {
                 border: none;
-                border-bottom: 2px solid $section-divider-color;
+                @include article-border;
             }
 
             p {
