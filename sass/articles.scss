@@ -193,15 +193,15 @@ p {
     row-gap: 10px;
     grid-template-rows: repeat(4, 1fr);
 
-    h3 {
-        /* this makes sure the breaking news section looks like a fieldset */
+    /* this makes sure the breaking news section looks like a fieldset */
+    #breaking-news-title {
+        color: $breaking-news;
         width: 130px;
-        background: white;
         padding-left: 5px;
+        font-size: 30px;
         margin-top: -15px;
         margin-left: 20px;
-        color: $breaking-news;
-        font-size: 30px;
+        background: white;
     }
 
     @media (min-width: 48em) {

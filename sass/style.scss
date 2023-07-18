@@ -1,4 +1,6 @@
 @use 'nav';
 @use 'articles';
 
-//main scss 
+.hidden {
+    display: none;
+}

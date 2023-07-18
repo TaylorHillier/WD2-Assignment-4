@@ -29,6 +29,11 @@
 
 #mobile-nav {
     display: block;
+
+    @media (min-width: 48em) {
+        display: none;
+    }
+
 }
 
 .menu-wrapper {
@@ -244,6 +249,10 @@
     align-items: center;
     background-color: #231f20;
     color: white;
+
+    @media (min-width: 48em) {
+        display: none;
+    }
 }
 
 .globalHeaderDesktop {
