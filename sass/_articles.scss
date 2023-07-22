@@ -4,7 +4,7 @@ $section-divider-color: rgb(167, 167, 167);
 
 $primary-color: #231f20;
 
-/* Attribute Selector */
+
 a[data-category="external"] {
     color: red;
 }
@@ -13,7 +13,7 @@ h3 {
     font-size: 5vw;
 }
 
-/* Makes the images responsive */
+
 .responsive-image {
     max-width: 100%;
     height: auto;
@@ -22,11 +22,11 @@ h3 {
         opacity: 0.8;
     }
 
-    /* Adds a transition effect for a smooth opacity change */
+
     transition: opacity 0.3s ease-in-out;
 }
 
-/* Adds an underline text when hovering the article */
+
 article:hover {
 
     h2,
@@ -37,14 +37,10 @@ article:hover {
     }
 }
 
-/* Adjacent Sibling Selector */
+
 .responsive-image:hover+.responsive-image {
     opacity: 0.5;
 }
-
-/* only displays for desktop */
-
-/* for the breaking news text */
 
 a {
     text-decoration: none;
@@ -60,13 +56,9 @@ a {
     }
 }
 
-/* for the date */
-
 p {
     margin: 0;
 }
-
-/* making sure the top article and the main articles are aligned */
 
 .articles-wrap {
     display: grid;
@@ -77,9 +69,6 @@ p {
     display: none;
 }
 
-/* ---------------------- Featured article ---------------------------- */
-
-/* General Sibling Selector */
 #top-article~.main-wrap {
     margin-top: 5rem;
 
@@ -97,13 +86,11 @@ p {
     }
 }
 
-/* --------------- for the main + breaking news articles -------------------------- */
 @mixin article-border {
     border-bottom: 2px solid $section-divider-color;
 }
 
 .two-row-articles article {
-    /* this keeps the grid box the proper size for mobile layout */
 
     max-height: 200px;
     overflow: hidden;
@@ -127,8 +114,6 @@ p {
     }
 }
 
-/* maybe change this number based on what our text/images look like */
-
 @media (min-width: 48em) {
     .two-row-articles:not(#breaking-news) {
         border-top: 2px solid $section-divider-color;
@@ -151,8 +136,6 @@ p {
         }
     }
 }
-
-/* --------------- only for the main articles ----------------------- */
 
 #main-articles {
     column-gap: 30px;
@@ -188,7 +171,6 @@ p {
     }
 }
 
-/* ---------------- just for the breaking news/side section articles ----------- */
 
 .side-section {
     margin-top: 100px;
@@ -196,7 +178,6 @@ p {
     row-gap: 10px;
     grid-template-rows: repeat(4, 1fr);
 
-    /* this makes sure the breaking news section looks like a fieldset */
     #breaking-news-title {
         color: $breaking-news;
         width: 130px;
@@ -216,12 +197,10 @@ p {
         border: 2px solid $breaking-news;
         margin-bottom: 30rem;
 
-        /* only show breaking news images in mobile */
         img {
             display: none;
         }
 
-        /* removes border for last article title */
         article:last-child {
             border: none;
         }
@@ -229,8 +208,6 @@ p {
         @media (min-width: 90em) {
             margin-right: 10rem;
         }
-
-        /* --------- for styling the articles within the .side-section wrap -------- */
 
         #breaking-news {
             margin-top: 30px;
@@ -250,13 +227,11 @@ p {
                     font-size: 2.5vw;
                 }
 
-                /* to move the date to the right */
                 p {
                     grid-column-start: 2;
                 }
             }
 
-            /* styling the number */
             .breaking-news-num {
                 display: inline;
                 color: $breaking-news;
